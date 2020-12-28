@@ -1,0 +1,14 @@
+{
+  "name": "cocktail-recipe-book",
+  "version": "1.0.0",
+  "description": "A personal drink recipe book that allows users to search by ingredients they have in their kitchen and save their favorite recipes.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@leah-cardon",
+  "license": "ISC"
+}
