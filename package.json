@@ -2,25 +2,34 @@
   "name": "drink-recipe-book",
   "version": "1.0.0",
   "description": "A personal drink recipe book that allows users to search by ingredients they have in their kitchen and save their favorite recipes.",
-  "main": "/server/index.js",
+  "main": "server/index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/public/index.js",
-    "dev-start": "nodemon src/public/index.js"
+    "start": "node server/index.js",
+    "devstart": "nodemon server/index.js --watch server --watch src",
+    "devbuild": "webpack --config webpack.config.js --watch"
   },
   "author": "@leah-cardon",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "babel-loader": "^8.2.2",
     "jest": "^26.6.3",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.0"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
