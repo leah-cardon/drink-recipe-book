@@ -16,12 +16,10 @@ class App extends React.Component {
   }
 
   switchSearches () {
-    const swapped = this.state.search === 'simple' ? 'advanced' : 'simple';
-
+    const swapped = this.state.search === 'basic' ? 'advanced' : 'basic';
     this.setState({
       search: swapped
     });
-    console.log('new search: ', this.state.search);
   }
 
   render () {
@@ -29,9 +27,8 @@ class App extends React.Component {
       <div>
         <h1>My Cocktail Recipe Book</h1>
         <a href='/profile' >My Profile</a>
-        <BasicSearch />
-        <AdvancedSearch />
-        <button onClick={this.switchSearches}>{this.state.search === 'simple' ? 'Advanced Search' : 'Simple Search'}</button>
+        {this.state.search === 'basic' ? <BasicSearch /> : <AdvancedSearch />}
+        <button onClick={this.switchSearches}>{this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}</button>
         <SearchResults />
 
       </div>
