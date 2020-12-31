@@ -1,3 +1,12 @@
+* {
+  font-family: 'Noto Sans JP';
+}
+
+.header {
+  background-color: black;
+  width: 100%;
+}
+
 .result {
   display: grid;
   border: 1px solid black;
@@ -32,5 +41,13 @@
 }
 
 .centered {
+  display: grid;
   margin: 0 auto;
+}
+
+.title {
+  font-family: 'Yellowtail';
+  font-size: 72px;
+  font-weight: 200;
+  color: white;
 }

@@ -76,8 +76,10 @@ class App extends React.Component {
   render () {
     return (
       <div className='appContainer'>
-        <div className='centered'>
-          <h1>My Cocktail Recipe Book</h1>
+        <div className='centered header'>
+          <div className='centered'>
+            <h1 className='title'>Bar Book</h1>
+          </div>
         </div>
         <a href='/profile'>My Profile</a>
         {
