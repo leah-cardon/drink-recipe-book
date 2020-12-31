@@ -7,16 +7,12 @@ app.use(express.static(path.join(__dirname, '/../src/dist')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send('Hello world!')
-});
-
 app.get('/profile', (req, res) => {
   res.send('My profile page!')
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at localhost:${port}`);
+  console.log(`Cocktail recipe book app listening at localhost:${port}`);
 });
 
 module.exports = app;

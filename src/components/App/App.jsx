@@ -43,14 +43,11 @@ class App extends React.Component {
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + input)
     .then((results) => {
       const drinks = results.data.drinks;
-      console.log(drinks);
       this.setState({
         searchResults: drinks
       });
     })
     .catch((err) => console.error(err));
-    console.log('search complete');
-    console.log('search results in state: ', this.state.searchResults);
   }
 
   render () {
