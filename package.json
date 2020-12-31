@@ -9,8 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
-    "devstart": "nodemon server/index.js --watch server --watch src",
-    "devbuild": "webpack --config webpack.config.js --watch"
+    "devstart": "nodemon server/index.js --watch server --watch",
+    "devbuild": "webpack --config webpack.config.js --watch --progress"
   },
   "author": "@leah-cardon",
   "license": "ISC",
