@@ -43,6 +43,7 @@ class App extends React.Component {
     let input = this.state.searchInput;
     let drinks = [];
     let drinksWithIngredient = [];
+    let allResults = [];
 
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + input)
     .then((results) => {
@@ -56,7 +57,15 @@ class App extends React.Component {
       .catch((err) => console.error(err));
     })
     .then(() => {
-      const allResults = drinks.concat(drinksWithIngredient);
+      if (drinks) {
+        allResults = drinks;
+      }
+      if (drinksWithIngredient) {
+        allResults = allResults.concat(drinksWithIngredient);
+      }
+      if (!drinks && !drinksWithIngredient) {
+        allResults = null;
+      }
       this.setState({
         searchResults: allResults
       });
