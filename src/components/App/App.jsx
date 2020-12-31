@@ -12,7 +12,8 @@ class App extends React.Component {
 
     this.state = {
       search: 'simple',
-      searchInput: ''
+      searchInput: '',
+      searchResults: []
     }
     this.switchSearches = this.switchSearches.bind(this);
     this.search = this.search.bind(this);
@@ -40,9 +41,16 @@ class App extends React.Component {
     event.preventDefault();
     const input = this.state.searchInput;
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + input)
-    .then((results) => console.log(results.data.drinks))
+    .then((results) => {
+      const drinks = results.data.drinks;
+      console.log(drinks);
+      this.setState({
+        searchResults: drinks
+      });
+    })
     .catch((err) => console.error(err));
     console.log('search complete');
+    console.log('search results in state: ', this.state.searchResults);
   }
 
   render () {
@@ -65,7 +73,7 @@ class App extends React.Component {
           />
         }
         <button onClick={this.switchSearches}>{this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}</button>
-        <SearchResults />
+        <SearchResults results={this.state.searchResults} />
 
       </div>
     );
