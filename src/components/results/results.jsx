@@ -1,9 +1,29 @@
 import React from 'react';
+import SearchResult from '../result/result.jsx';
 
-function SearchResults (props) {
-  return (
-    <h1>search results go here</h1>
-  );
+function SearchResults ({ results }) {
+
+  let resultComponents = [];
+
+  if (results === null) {
+    return (
+      <div>
+        No results found. Please search again
+      </div>);
+  } else if (results === undefined) {
+    return <div></div>;
+  } else {
+    resultComponents = results.map((item, index) => {
+      return (
+        <SearchResult key={index} result={item} />
+      );
+    });
+    return (
+      <div className='resultsContainer'>
+        {resultComponents}
+      </div>);
+  }
+
 };
 
 export default SearchResults;

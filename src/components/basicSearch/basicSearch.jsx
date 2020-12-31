@@ -1,13 +1,15 @@
 import React from 'react';
 
-function BasicSearch (props) {
+
+function BasicSearch ({ search, input, handleChange }) {
   return (
-    <div>
-      <form className='basic'>
-        <input type='text'></input>
-        <button>Search</button>
-      </form>
-    </div>
+    <form className='basic' onSubmit={search} >
+      <input type='text'
+        name='searchInput'
+        value={input}
+        onChange={handleChange} />
+      <input type='submit' value='Submit' />
+    </form>
   );
 }
 
