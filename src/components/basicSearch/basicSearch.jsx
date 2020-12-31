@@ -3,12 +3,12 @@ import React from 'react';
 
 function BasicSearch (props) {
   return (
-    <form className='basic'>
+    <form className='basic' onSubmit={props.search} >
       <input type='text'
         name='searchInput'
         value={props.input}
         onChange={props.handleChange} />
-      <button onClick={props.search}>Search</button>
+      <input type='submit' value='Submit' />
     </form>
   );
 }

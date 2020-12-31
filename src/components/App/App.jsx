@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import BasicSearch from '../basicSearch/basicSearch.jsx';
 import AdvancedSearch from '../advancedSearch/advancedSearch.jsx';
 import SearchResults from '../results/results.jsx';
@@ -36,6 +38,10 @@ class App extends React.Component {
 
   search (event) {
     event.preventDefault();
+    const input = this.state.searchInput;
+    axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + input)
+    .then((results) => console.log(results.data.drinks))
+    .catch((err) => console.error(err));
     console.log('search complete');
   }
 
