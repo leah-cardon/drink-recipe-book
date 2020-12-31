@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchResult from '../result/result.jsx';
 
 function SearchResults ({ results }) {
 
@@ -14,7 +15,7 @@ function SearchResults ({ results }) {
   } else {
     resultComponents = results.map((item, index) => {
       return (
-        <div key={index}>{item.strDrink}</div>
+        <SearchResult key={index} result={item} />
       );
     });
     return (

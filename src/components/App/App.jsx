@@ -39,12 +39,26 @@ class App extends React.Component {
 
   search (event) {
     event.preventDefault();
-    const input = this.state.searchInput;
+
+    let input = this.state.searchInput;
+    let drinks = [];
+    let drinksWithIngredient = [];
+
     axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + input)
     .then((results) => {
-      const drinks = results.data.drinks;
+      drinks = results.data.drinks;
+    })
+    .then(() => {
+      return axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + input)
+      .then((results) => {
+        drinksWithIngredient = results.data.drinks;
+      })
+      .catch((err) => console.error(err));
+    })
+    .then(() => {
+      const allResults = drinks.concat(drinksWithIngredient);
       this.setState({
-        searchResults: drinks
+        searchResults: allResults
       });
     })
     .catch((err) => console.error(err));
@@ -54,7 +68,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>My Cocktail Recipe Book</h1>
-        <a href='/profile' >My Profile</a>
+        <a href='/profile'>My Profile</a>
         {
           this.state.search === 'basic' ?
           <BasicSearch
