@@ -8,5 +8,19 @@
   display: grid;
   border: 1px solid black;
   width: 50%;
-  justify-content: center;
+  margin: 0 auto;
+}
+
+.appContainer {
+  display: grid;
+}
+
+.thumbnailContainer {
+  width: 100px;
+  height: 100px;
+}
+
+.thumbnail {
+  max-width: 100%;
+  max-height: 100;
 }

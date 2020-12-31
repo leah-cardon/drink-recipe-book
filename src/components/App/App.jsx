@@ -75,7 +75,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='appContainer'>
         <h1>My Cocktail Recipe Book</h1>
         <a href='/profile'>My Profile</a>
         {

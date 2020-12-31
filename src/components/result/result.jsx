@@ -4,7 +4,9 @@ function SearchResult ({ result }) {
 
   return (
     <div className='result'>
-      <img src={result.strDrinkThumb} />
+      <div className='thumbnailContainer'>
+        <img src={result.strDrinkThumb} className='thumbnail' />
+      </div>
       <h1>{result.strDrink}</h1>
     </div>
   );
