@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      search: 'simple',
+      search: 'basic',
       searchInput: '',
       searchResults: []
     }
@@ -76,7 +76,9 @@ class App extends React.Component {
   render () {
     return (
       <div className='appContainer'>
-        <h1>My Cocktail Recipe Book</h1>
+        <div className='centered'>
+          <h1>My Cocktail Recipe Book</h1>
+        </div>
         <a href='/profile'>My Profile</a>
         {
           this.state.search === 'basic' ?
@@ -92,7 +94,8 @@ class App extends React.Component {
             input={this.state.searchInput}
           />
         }
-        <button onClick={this.switchSearches}>{this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}</button>
+        <button className='switchSearches' onClick={this.switchSearches}>{this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}</button>
+        <div></div>
         <SearchResults results={this.state.searchResults} />
 
       </div>

@@ -19,7 +19,7 @@ function SearchResults ({ results }) {
       );
     });
     return (
-      <div className='resultsContainer'>
+      <div className='resultsContainer centered'>
         {resultComponents}
       </div>);
   }
