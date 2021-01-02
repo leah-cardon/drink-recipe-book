@@ -13,7 +13,8 @@ class App extends React.Component {
     this.state = {
       search: 'basic',
       searchInput: '',
-      searchResults: []
+      searchResults: [],
+      profileIsDisplayed: false
     }
     this.switchSearches = this.switchSearches.bind(this);
     this.search = this.search.bind(this);
@@ -75,32 +76,39 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className='appContainer'>
-        <div className='centered header'>
-          <div className='centered'>
-            <h1 className='title'>Bar Book</h1>
+      <>
+        <div className='content'>
+          <div className='centered header'>
+            <div className='centered'>
+              <h1 className='title'>Bartender's Handbook</h1>
+            </div>
           </div>
+          <div className='profileLink'>
+            <a href='/profile'>My Profile</a>
+          </div>
+          <div className='spacer'></div>
+            {
+              this.state.search === 'basic' ?
+              <BasicSearch
+                search={this.search}
+                handleChange={this.handleInputChange}
+                input={this.state.searchInput}
+              />
+              :
+              <AdvancedSearch
+                search={this.search}
+                handleChange={this.handleInputChange}
+                input={this.state.searchInput}
+              />
+            }
+          <div className='spacer'></div>
+          <button className='switchSearches' onClick={this.switchSearches}>{this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}</button>
+          <div></div>
+          <SearchResults results={this.state.searchResults} />
         </div>
-        <a href='/profile'>My Profile</a>
-        {
-          this.state.search === 'basic' ?
-          <BasicSearch
-            search={this.search}
-            handleChange={this.handleInputChange}
-            input={this.state.searchInput}
-          />
-          :
-          <AdvancedSearch
-            search={this.search}
-            handleChange={this.handleInputChange}
-            input={this.state.searchInput}
-          />
-        }
-        <button className='switchSearches' onClick={this.switchSearches}>{this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}</button>
-        <div></div>
-        <SearchResults results={this.state.searchResults} />
-
-      </div>
+        <div className='spacer'></div>
+        <div className='footer'></div>
+      </>
     );
   }
 }
