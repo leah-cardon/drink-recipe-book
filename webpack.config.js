@@ -1,27 +1,30 @@
+const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
-  entry: './src/dist/index.jsx',
+  mode: 'production',
+  entry: path.resolve(__dirname, './src/dist/index.jsx'),
   watch: true,
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'src/dist'),
+    path: path.resolve(__dirname, './src/dist'),
   },
+  // plugins: [new webpack.HotModuleReplacementPlugin()],
   module: {
     rules: [
       {
-        test: /.jsx?$/,
+        test: /\.(js|jsx)$/,
         include: path.join(__dirname, '/src'),
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+        use: ['babel-loader']
       }
     ]
   },
-  resolve: { extensions: ['.js', '.jsx'] }
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, './src/dist'),
+    hot: true
+  }
 };

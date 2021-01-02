@@ -11,7 +11,7 @@ function SearchResults ({ results }) {
         No results found. Please search again
       </div>);
   } else if (results === undefined) {
-    return <div></div>;
+    return '';
   } else {
     resultComponents = results.map((item, index) => {
       return (
@@ -19,7 +19,7 @@ function SearchResults ({ results }) {
       );
     });
     return (
-      <div className='resultsContainer'>
+      <div className='resultsContainer centered'>
         {resultComponents}
       </div>);
   }
