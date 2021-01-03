@@ -12,7 +12,7 @@ class App extends React.Component {
       search: 'basic',
       searchInput: '',
       searchResults: [],
-      profileIsDisplayed: false,
+      // profileIsDisplayed: false,
     };
     this.switchSearches = this.switchSearches.bind(this);
     this.search = this.search.bind(this);
@@ -69,6 +69,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { search, searchInput, searchResults } = this.state;
+
     return (
       <>
         <div className="content">
@@ -82,18 +84,20 @@ class App extends React.Component {
           </div>
           <div className="spacer" />
           {
-            this.state.search === 'basic' ?
+            search === 'basic' ? (
               <BasicSearch
                 search={this.search}
                 handleChange={this.handleInputChange}
-                input={this.state.searchInput}
+                input={searchInput}
               />
-              :
-              <AdvancedSearch
-                search={this.search}
-                handleChange={this.handleInputChange}
-                input={this.state.searchInput}
-              />
+            )
+              : (
+                <AdvancedSearch
+                  search={this.search}
+                  handleChange={this.handleInputChange}
+                  input={searchInput}
+                />
+              )
           }
           <div className="spacer" />
           <button
@@ -101,10 +105,10 @@ class App extends React.Component {
             className="switchSearches"
             onClick={this.switchSearches}
           >
-            {this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}
+            {search === 'basic' ? 'Advanced Search' : 'Simple Search'}
           </button>
           <div />
-          <SearchResults results={this.state.searchResults} />
+          <SearchResults results={searchResults} />
         </div>
         <div className="spacer" />
         <div className="footer" />
