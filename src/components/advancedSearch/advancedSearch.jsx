@@ -18,6 +18,7 @@ function AdvancedSearch (props) {
       <label>
         <input type='radio' value='Non-alcoholic only' name='non/alcoholic' /> Non-alcoholic only
       </label>
+      <input type='submit' value='Search' />
     </form>
   );
 };
