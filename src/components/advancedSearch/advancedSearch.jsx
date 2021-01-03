@@ -1,13 +1,8 @@
 import React from 'react';
 
-function AdvancedSearch(props) {
+function AdvancedSearch() {
   return (
     <form className="centered">
-            {/* <input type='text'
-        name='searchInput'
-        placeholder='Mojito, gin, pisco, grenadine...'
-        value={input}
-        onChange={handleChange} /> */}
       <input type="text" placeholder="ingredient 1" />
       <input type="text" placeholder="ingredient 2" />
       <input type="text" placeholder="ingredient 3" />

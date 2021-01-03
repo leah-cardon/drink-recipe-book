@@ -1,113 +1,117 @@
 import React from 'react';
 import axios from 'axios';
-
-import BasicSearch from '../basicSearch/basicSearch.jsx';
-import AdvancedSearch from '../advancedSearch/advancedSearch.jsx';
-import SearchResults from '../results/results.jsx';
-
+import BasicSearch from '../basicSearch/basicSearch';
+import AdvancedSearch from '../advancedSearch/advancedSearch';
+import SearchResults from '../results/results';
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
       search: 'basic',
       searchInput: '',
       searchResults: [],
-      profileIsDisplayed: false
-    }
+      // profileIsDisplayed: false,
+    };
     this.switchSearches = this.switchSearches.bind(this);
     this.search = this.search.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-
   }
 
-  switchSearches () {
-    const swapped = this.state.search === 'basic' ? 'advanced' : 'basic';
+  handleInputChange(event) {
+    const { name, value } = event.target;
+
     this.setState({
-      search: swapped
+      [name]: value,
     });
+    // console.log(name, ': ', this.state[name]);
   }
 
-  handleInputChange (event) {
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({
-      [name]: value
-    });
-    console.log(name + ': ' + this.state[name]);
+  switchSearches() {
+    this.setState((prevState) => ({
+      search: prevState.search === 'basic' ? 'advanced' : 'basic',
+    }));
   }
 
-  search (event) {
+  search(event) {
     event.preventDefault();
 
-    let input = this.state.searchInput;
+    const { searchInput: input } = this.state;
     let drinks = [];
     let drinksWithIngredient = [];
     let allResults = [];
 
-    axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + input)
-    .then((results) => {
-      drinks = results.data.drinks;
-    })
-    .then(() => {
-      return axios.get('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + input)
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${input}`)
       .then((results) => {
-        drinksWithIngredient = results.data.drinks;
+        drinks = results.data.drinks;
+      })
+      .then(() => axios.get(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${input}`)
+        .then((results) => {
+          drinksWithIngredient = results.data.drinks;
+        })
+        .catch((err) => console.error(err)))
+      .then(() => {
+        if (drinks) {
+          allResults = drinks;
+        }
+        if (drinksWithIngredient) {
+          allResults = allResults.concat(drinksWithIngredient);
+        }
+        if (!drinks && !drinksWithIngredient) {
+          allResults = null;
+        }
+        this.setState({
+          searchResults: allResults,
+        });
       })
       .catch((err) => console.error(err));
-    })
-    .then(() => {
-      if (drinks) {
-        allResults = drinks;
-      }
-      if (drinksWithIngredient) {
-        allResults = allResults.concat(drinksWithIngredient);
-      }
-      if (!drinks && !drinksWithIngredient) {
-        allResults = null;
-      }
-      this.setState({
-        searchResults: allResults
-      });
-    })
-    .catch((err) => console.error(err));
   }
 
-  render () {
+  render() {
+    const { search, searchInput, searchResults } = this.state;
+
     return (
       <>
-        <div className='content'>
-          <div className='centered header'>
-            <div className='centered'>
-              <h1 className='title'>Bar Book</h1>
+        <div className="content">
+          <div className="centered header">
+            <div className="centered">
+              <h1 className="title">Bar Book</h1>
             </div>
           </div>
-          <div className='profileLink'>
-            <a href='/profile'>My Profile</a>
+          <div className="profileLink">
+            <a href="/profile">My Profile</a>
           </div>
-          <div className='spacer'></div>
-            {
-              this.state.search === 'basic' ?
+          <div className="spacer" />
+          {
+            search === 'basic' ? (
               <BasicSearch
                 search={this.search}
                 handleChange={this.handleInputChange}
-                input={this.state.searchInput}
+                input={searchInput}
               />
-              :
-              <AdvancedSearch
-                search={this.search}
-                handleChange={this.handleInputChange}
-                input={this.state.searchInput}
-              />
-            }
-          <div className='spacer'></div>
-          <button className='switchSearches' onClick={this.switchSearches}>{this.state.search === 'basic' ? 'Advanced Search' : 'Simple Search'}</button>
-          <div></div>
-          <SearchResults results={this.state.searchResults} />
+            )
+              : (
+                <AdvancedSearch
+                  search={this.search}
+                  handleChange={this.handleInputChange}
+                  input={searchInput}
+                />
+              )
+          }
+          <div className="spacer" />
+          <button
+            type="button"
+            className="switchSearches"
+            onClick={this.switchSearches}
+          >
+            {search === 'basic' ? 'Advanced Search' : 'Simple Search'}
+          </button>
+          <div />
+          <SearchResults results={searchResults} />
         </div>
-        <div className='spacer'></div>
-        <div className='footer'></div>
+        <div className="spacer" />
+        <div className="footer" />
       </>
     );
   }

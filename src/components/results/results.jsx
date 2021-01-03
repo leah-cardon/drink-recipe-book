@@ -1,29 +1,36 @@
 import React from 'react';
-import SearchResult from '../result/result.jsx';
+import PropTypes from 'prop-types';
+import SearchResult from '../result/result';
 
-function SearchResults ({ results }) {
-
+function SearchResults({ results }) {
   let resultComponents = [];
 
   if (results === null) {
     return (
       <div>
         No results found. Please search again
-      </div>);
-  } else if (results === undefined) {
+      </div>
+    );
+  }
+  if (results === undefined) {
     return '';
-  } else {
-    resultComponents = results.map((item, index) => {
-      return (
-        <SearchResult key={index} result={item} />
-      );
-    });
-    return (
-      <div className='resultsContainer centered'>
-        {resultComponents}
-      </div>);
   }
 
+  resultComponents = results.map((item) => (
+    <SearchResult
+      key={item.idDrink}
+      result={item}
+    />
+  ));
+  return (
+    <div className="resultsContainer centered">
+      {resultComponents}
+    </div>
+  );
+}
+
+SearchResults.propTypes = {
+  results: PropTypes.arrayOf.isRequired,
 };
 
 export default SearchResults;
