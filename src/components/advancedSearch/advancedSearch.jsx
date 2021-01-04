@@ -30,11 +30,9 @@ function AdvancedSearch({ advancedSearch }) {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            // search function here! send all form data
-            // search(values.searchInput);
-            // move this to app level so it can update state
-            utils.advancedSearchFilter(values);
+            // have a function from app level to update state with what this returns
             alert(JSON.stringify(values));
+            utils.advancedSearchFilter(values);
             setSubmitting(false);
           }, 400);
         }}
