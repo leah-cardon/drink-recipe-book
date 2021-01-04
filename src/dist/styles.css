@@ -108,7 +108,7 @@ button, input[type=submit] {
 
 .searchBar {
   display: grid;
-  grid-template-columns: auto 20px 100px;
+  grid-template-columns: auto 100px;
   width: 50%;
 }
 

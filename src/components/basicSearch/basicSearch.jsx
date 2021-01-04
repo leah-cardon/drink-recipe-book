@@ -32,11 +32,10 @@ function BasicSearch() {
               name="searchInput"
               placeholder="Mojito, gin, pisco, grenadine..."
             />
-            <ErrorMessage name="searchInput" component="div" />
-
             <button type="submit" disabled={isSubmitting}>
               Search
             </button>
+            <ErrorMessage name="searchInput" component="div" />
           </Form>
         )}
       </Formik>
