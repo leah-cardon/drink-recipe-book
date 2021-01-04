@@ -6,6 +6,7 @@ import {
   ErrorMessage,
 } from 'formik';
 import PropTypes from 'prop-types';
+import utils from '../../../lib/utils/apiLogic';
 
 function AdvancedSearch({ advancedSearch }) {
   return (
@@ -31,6 +32,8 @@ function AdvancedSearch({ advancedSearch }) {
           setTimeout(() => {
             // search function here! send all form data
             // search(values.searchInput);
+            // move this to app level so it can update state
+            utils.advancedSearchFilter(values);
             alert(JSON.stringify(values));
             setSubmitting(false);
           }, 400);
