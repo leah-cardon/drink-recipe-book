@@ -54,6 +54,8 @@ class App extends React.Component {
       .then(() => {
         if (drinks) {
           allResults = drinks;
+        } else {
+          allResults = [];
         }
         if (drinksWithIngredient) {
           allResults = allResults.concat(drinksWithIngredient);
