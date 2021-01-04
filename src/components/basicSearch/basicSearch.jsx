@@ -5,8 +5,9 @@ import {
   Field,
   ErrorMessage,
 } from 'formik';
+import PropTypes from 'prop-types';
 
-function BasicSearch() {
+function BasicSearch({ search }) {
   return (
     <div>
       <Formik
@@ -20,7 +21,7 @@ function BasicSearch() {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            search(values.searchInput);
             setSubmitting(false);
           }, 400);
         }}
@@ -42,5 +43,9 @@ function BasicSearch() {
     </div>
   );
 }
+
+BasicSearch.propTypes = {
+  search: PropTypes.func.isRequired,
+};
 
 export default BasicSearch;

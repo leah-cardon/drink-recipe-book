@@ -34,10 +34,10 @@ class App extends React.Component {
     }));
   }
 
-  search(event) {
-    event.preventDefault();
+  search(input) {
+    // event.preventDefault();
 
-    const { searchInput: input } = this.state;
+    // const { searchInput: input } = this.state;
     let drinks = [];
     let drinksWithIngredient = [];
     let allResults = [];
