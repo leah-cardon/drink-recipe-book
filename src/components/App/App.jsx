@@ -10,7 +10,6 @@ class App extends React.Component {
 
     this.state = {
       search: 'basic',
-      searchInput: '',
       searchResults: [],
       // profileIsDisplayed: false,
     };
@@ -35,9 +34,6 @@ class App extends React.Component {
   }
 
   search(input) {
-    // event.preventDefault();
-
-    // const { searchInput: input } = this.state;
     let drinks = [];
     let drinksWithIngredient = [];
     let allResults = [];
