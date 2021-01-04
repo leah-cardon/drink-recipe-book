@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AdvancedSearch() {
+function AdvancedSearch({ advancedSearch }) {
   return (
     <form className="centered">
       <input type="text" placeholder="ingredient 1" />
