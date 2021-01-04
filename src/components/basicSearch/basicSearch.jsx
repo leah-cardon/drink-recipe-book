@@ -1,13 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Formik } from 'formik';
+import {
+  Formik,
+  Form,
+  Field,
+  ErrorMessage,
+} from 'formik';
 
-function BasicSearch({ search, input }) {
+function BasicSearch() {
   return (
     <div>
       <Formik
         initialValues={{ searchInput: '' }}
-        validate={values => {
+        validate={(values) => {
           const errors = {};
           if (!values.searchInput) {
             errors.searchInput = 'Required';
@@ -21,39 +25,23 @@ function BasicSearch({ search, input }) {
           }, 400);
         }}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <form className="centered basic searchBar" onSubmit={handleSubmit}>
-            <input
+        {({ isSubmitting }) => (
+          <Form className="centered basic searchBar">
+            <Field
               type="text"
               name="searchInput"
               placeholder="Mojito, gin, pisco, grenadine..."
-              value={values.searchInput}
-              onChange={handleChange}
-              onBlur={handleBlur}
             />
-            {errors.searchInput && touched.searchInput && errors.searchInput}
-            <div />
-            <button type="submit" value="Search" disabled={isSubmitting}>
+            <ErrorMessage name="searchInput" component="div" />
+
+            <button type="submit" disabled={isSubmitting}>
               Search
             </button>
-          </form>
+          </Form>
         )}
       </Formik>
     </div>
   );
 }
-
-BasicSearch.propTypes = {
-  search: PropTypes.func.isRequired,
-  input: PropTypes.string.isRequired,
-};
 
 export default BasicSearch;
