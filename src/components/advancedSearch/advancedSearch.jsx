@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import utils from '../../../lib/utils/apiLogic';
 
-function AdvancedSearch({ advancedSearch }) {
+function AdvancedSearch({ setSearchResults }) {
   return (
     <div>
       <Formik
@@ -19,7 +19,7 @@ function AdvancedSearch({ advancedSearch }) {
           ingredient4: '',
           ingredient5: '',
           'non/alcoholic': 'both',
-        }}
+        }}ß
         validate={(values) => {
           const errors = {};
           if (!values.ingredient1) {
@@ -30,10 +30,10 @@ function AdvancedSearch({ advancedSearch }) {
         }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            // have a function from app level to update state with what this returns
-            alert(JSON.stringify(values));
-            utils.advancedSearchFilter(values);
-            setSubmitting(false);
+            utils.advancedSearchFilter(values)
+              .then((results) => setSearchResults(results))
+              .then(() => setSubmitting(false))
+              .catch((err) => console.error(err));
           }, 400);
         }}
       >
@@ -72,7 +72,7 @@ function AdvancedSearch({ advancedSearch }) {
 }
 
 AdvancedSearch.propTypes = {
-  advancedSearch: PropTypes.func.isRequired,
+  setSearchResults: PropTypes.func.isRequired,
 };
 
 export default AdvancedSearch;
