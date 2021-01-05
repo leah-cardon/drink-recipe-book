@@ -15,17 +15,21 @@ class App extends React.Component {
     };
     this.switchSearches = this.switchSearches.bind(this);
     this.search = this.search.bind(this);
-    this.advancedSearch = this.advancedSearch.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.setSearchResults = this.setSearchResults.bind(this);
   }
 
   handleInputChange(event) {
     const { name, value } = event.target;
-
     this.setState({
       [name]: value,
     });
-    // console.log(name, ': ', this.state[name]);
+  }
+
+  setSearchResults(results) {
+    this.setState({
+      searchResults: results,
+    });
   }
 
   switchSearches() {
@@ -67,20 +71,6 @@ class App extends React.Component {
       .catch((err) => console.error(err));
   }
 
-  advancedSearch(formInputs) {
-    axios.get(/* drinks with first ingredient */)
-      .then((results) => {
-      /* call imported api helper on it to whittle down results
-      to ones that include all of the ingredients and are alcohol/not alcohol */
-      })
-      .then((narrowedDownResults) => {
-        this.setState({
-          searchResults: narrowedDownResults,
-        });
-      })
-      .catch((err) => console.error(err));
-  }
-
   render() {
     const { search, searchInput, searchResults } = this.state;
 
@@ -109,6 +99,7 @@ class App extends React.Component {
                   search={this.search}
                   handleChange={this.handleInputChange}
                   input={searchInput}
+                  setSearchResults={this.setSearchResults}
                 />
               )
           }
