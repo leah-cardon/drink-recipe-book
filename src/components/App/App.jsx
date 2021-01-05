@@ -107,14 +107,19 @@ class App extends React.Component {
           <div className="spacer" />
           <button
             type="button"
-            className="switchSearches"
+            className="centered switchSearches"
             onClick={this.switchSearches}
           >
             {search === 'basic' ? 'Advanced Search' : 'Simple Search'}
           </button>
+          <div className="spacer" />
           <div />
           <SearchResults results={searchResults} />
         </div>
+        <div className="spacer" />
+        <div className="spacer" />
+        <div className="spacer" />
+        <div className="spacer" />
         <div className="spacer" />
         <div className="footer" />
       </>

@@ -21,20 +21,6 @@ body {
   display: grid;
 }
 
-.footer {
-  min-width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color: black;
-  height: 100px;
-}
-
-.header {
-  background-color: black;
-  width: 100%;
-  padding: 50px;
-}
-
 input, textarea {
   font-family:inherit;
   font-size: inherit;
@@ -52,18 +38,49 @@ button, input[type=submit] {
   width: 100px;
 }
 
+input[type=text] {
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0,0,0,0.1);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.footer {
+  min-width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  height: 100px;
+}
+
+.header {
+  background-color: black;
+  width: 100%;
+  padding: 50px;
+}
+
 .result {
   display: grid;
-  border: 1px solid black;
+  border-bottom: 1px solid gray;
   width: 100%;
-  height: 300px;
-  grid-template-columns: 210px auto;
+  height: auto;
+  grid-template-columns: 120px auto;
+  padding: 20px;
+}
+
+.drinkDetail {
+  display: grid;
+  border-bottom: 1px solid gray;
+  width: 100%;
+  height: auto;
+  grid-template-columns: 220px auto;
+  padding: 20px;
 }
 
 .resultsContainer {
   display: grid;
-  border: 1px solid black;
   width: 60%;
+  border-top: 1px solid gray;
 }
 
 .appContainer {
@@ -71,6 +88,11 @@ button, input[type=submit] {
 }
 
 .thumbnailContainer {
+  width: 100px;
+  height: 100px;
+}
+
+.largerPicContainer {
   width: 200px;
   height: 200px;
 }
@@ -98,7 +120,7 @@ button, input[type=submit] {
 
 .spacer {
   display: grid;
-  height: 100px;
+  height: 50px;
 }
 
 .profileLink {
@@ -116,9 +138,7 @@ button, input[type=submit] {
   width: 50%;
 }
 
-input[type=text] {
-  border: 0;
-  box-shadow: 0 0 15px 4px rgba(0,0,0,0.1);
-  padding: 10px;
-  border-radius: 10px;
+.twoColumns {
+  display: grid;
+  grid-template-columns: 120px auto;
 }
