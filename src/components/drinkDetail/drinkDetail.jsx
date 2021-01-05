@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function DrinkDetail({ drink }) {
+function DrinkDetail({ drink, reset }) {
   return (
-    <div>
+    <div
+      onClick={() => reset(false)}
+    >
       I AM A DRINK DETAIL
     </div>
   );

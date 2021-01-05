@@ -7,7 +7,7 @@ function SearchResult({ result }) {
 
   if (clicked) {
     return (
-      <DrinkDetails drink={result} />
+      <DrinkDetails drink={result} reset={setClicked} />
     );
   }
   return (
