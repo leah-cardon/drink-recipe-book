@@ -41,15 +41,15 @@ input, textarea {
 }
 
 button, input[type=submit] {
-  appearance:none;
-  -webkit-appearance:none;
-  padding:10px;
-  border:none;
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px;
+  border: none;
   background-color: gray;
-  color:#fff;
-  font-weight:600;
-  border-radius:5px;
-  width:100%;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  width: 100px;
 }
 
 .result {
@@ -108,6 +108,11 @@ button, input[type=submit] {
 .searchBar {
   display: grid;
   grid-template-columns: auto 100px;
+  width: 50%;
+}
+
+.advancedSearchForm {
+  display: grid;
   width: 50%;
 }
 

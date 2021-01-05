@@ -30,6 +30,7 @@ class App extends React.Component {
     this.setState({
       searchResults: results,
     });
+    console.log(this.state.searchResults);
   }
 
   switchSearches() {
