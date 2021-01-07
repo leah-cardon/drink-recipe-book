@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import DrinkDetails from '../drinkDetail/drinkDetail';
 
 function SearchResult({ result }) {
+  const [clicked, setClicked] = useState(false);
+
+  if (clicked) {
+    return (
+      <DrinkDetails drink={result} reset={setClicked} />
+    );
+  }
   return (
-    <div className="result">
+    <div
+      className="result"
+      onClick={() => setClicked(true)}
+    >
       <div className="thumbnailContainer">
         <img
           src={result.strDrinkThumb}

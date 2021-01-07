@@ -30,6 +30,7 @@ class App extends React.Component {
     this.setState({
       searchResults: results,
     });
+    console.log(this.state.searchResults);
   }
 
   switchSearches() {
@@ -79,7 +80,7 @@ class App extends React.Component {
         <div className="content">
           <div className="centered header">
             <div className="centered">
-              <h1 className="title">Bar Book</h1>
+              <h1 className="title">Imbibrary</h1>
             </div>
           </div>
           <div className="profileLink">
@@ -106,14 +107,19 @@ class App extends React.Component {
           <div className="spacer" />
           <button
             type="button"
-            className="switchSearches"
+            className="centered switchSearches"
             onClick={this.switchSearches}
           >
             {search === 'basic' ? 'Advanced Search' : 'Simple Search'}
           </button>
+          <div className="spacer" />
           <div />
           <SearchResults results={searchResults} />
         </div>
+        <div className="spacer" />
+        <div className="spacer" />
+        <div className="spacer" />
+        <div className="spacer" />
         <div className="spacer" />
         <div className="footer" />
       </>

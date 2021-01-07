@@ -38,7 +38,7 @@ function AdvancedSearch({ setSearchResults }) {
         }}
       >
         {({ isSubmitting }) => (
-          <Form className="centered">
+          <Form className="centered advancedSearchForm">
             <Field type="text" name="ingredient1" />
             <ErrorMessage name="ingredient1" component="div" />
             <Field type="text" name="ingredient2" />
