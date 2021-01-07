@@ -80,7 +80,7 @@ class App extends React.Component {
         <div className="content">
           <div className="centered header">
             <div className="centered">
-              <h1 className="title">Bar Book</h1>
+              <h1 className="title">Imbibrary</h1>
             </div>
           </div>
           <div className="profileLink">
