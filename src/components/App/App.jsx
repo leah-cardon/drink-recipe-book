@@ -30,13 +30,14 @@ class App extends React.Component {
     this.setState({
       searchResults: results,
     });
-    console.log(this.state.searchResults);
+    // console.log(this.state.searchResults);
   }
 
   switchSearches() {
     this.setState((prevState) => ({
       search: prevState.search === 'basic' ? 'advanced' : 'basic',
     }));
+    this.setSearchResults([]);
   }
 
   search(input) {
