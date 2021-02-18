@@ -5,7 +5,7 @@ import DrinkDetails from '../drinkDetail/drinkDetail';
 function SearchResult({ result, searchOneDrink }) {
   const [clicked, setClicked] = useState(false);
 
-  if (clicked) {
+  if (result && clicked) {
     if (!result.strInstructions) {
       searchOneDrink(result.idDrink);
     }
@@ -27,7 +27,7 @@ function SearchResult({ result, searchOneDrink }) {
       </div>
       <h1>{result.strDrink}</h1>
     </div>
-  );
+  );ß
 }
 
 SearchResult.propTypes = {
