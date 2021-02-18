@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchResult from '../result/result';
 
-function SearchResults({ results }) {
+function SearchResults({ results, searchOneDrink }) {
   let resultComponents = [];
 
   if (results === null) {
@@ -20,6 +20,7 @@ function SearchResults({ results }) {
     <SearchResult
       key={item.idDrink}
       result={item}
+      searchOneDrink={searchOneDrink}
     />
   ));
   return (
@@ -31,6 +32,7 @@ function SearchResults({ results }) {
 
 SearchResults.propTypes = {
   results: PropTypes.arrayOf.isRequired,
+  searchOneDrink: PropTypes.func.isRequired,
 };
 
 export default SearchResults;

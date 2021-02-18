@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import DrinkDetails from '../drinkDetail/drinkDetail';
 
-function SearchResult({ result }) {
+function SearchResult({ result, searchOneDrink }) {
   const [clicked, setClicked] = useState(false);
 
   if (clicked) {
+    if (!result.strInstructions) {
+      searchOneDrink(result.idDrink);
+    }
     return (
       <DrinkDetails drink={result} reset={setClicked} />
     );
@@ -29,6 +32,7 @@ function SearchResult({ result }) {
 
 SearchResult.propTypes = {
   result: PropTypes.shape.isRequired,
+  searchOneDrink: PropTypes.func.isRequired,
 };
 
 export default SearchResult;

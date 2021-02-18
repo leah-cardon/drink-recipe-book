@@ -17,6 +17,7 @@ class App extends React.Component {
     this.search = this.search.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.setSearchResults = this.setSearchResults.bind(this);
+    this.searchOneDrink = this.searchOneDrink.bind(this);
   }
 
   handleInputChange(event) {
@@ -31,6 +32,24 @@ class App extends React.Component {
       searchResults: results,
     });
     // console.log(this.state.searchResults);
+  }
+
+  searchOneDrink(drinkId) {
+    let updatedDrinksState = [];
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkId}`)
+      .then((results) => {
+        let drinkInfo = results.data.drinks[0];
+        updatedDrinksState = this.state.searchResults.map((item) => {
+          if (item.idDrink === drinkId) {
+            item = drinkInfo;
+          }
+          return item;
+        });
+        this.setState({
+          searchResults: updatedDrinksState,
+        });
+      })
+      .catch((err) => console.error(err));
   }
 
   switchSearches() {
@@ -115,7 +134,7 @@ class App extends React.Component {
           </button>
           <div className="spacer" />
           <div />
-          <SearchResults results={searchResults} />
+          <SearchResults results={searchResults} searchOneDrink={this.searchOneDrink} />
         </div>
         <div className="spacer" />
         <div className="spacer" />
