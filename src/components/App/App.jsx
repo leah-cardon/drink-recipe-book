@@ -104,7 +104,7 @@ class App extends React.Component {
             </div>
           </div>
           <div className="profileLink">
-            <a href="/profile">My Profile</a>
+            {/* <a href="/profile">My Profile</a> */}
           </div>
           <div className="spacer" />
           {
